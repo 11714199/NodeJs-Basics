@@ -3,6 +3,7 @@ const fileName = "fileName.txt";
 // core module
 const http = require('http');
 const path = require('path');
+const os = require('os');
 
 
 async function fileSystem() {
@@ -94,5 +95,20 @@ console.log("relative: ", relative)
 
 let sep = join.split(path.sep)
 console.log("sep: ", sep)
+
+console.log("*****************  OS  **************************")
+
+console.log("Platform: ", os.platform());
+console.log("Type: ", os.type());
+console.log("Release: ", os.release());
+console.log("Archtecture: ", os.arch());
+console.log("CPUs: ", os.cpus().length);
+console.log("Total Memeory: ", os.totalmem());
+console.log("Free Memory: ", os.freemem());
+console.log("Network Information: ", os.networkInterfaces());
+console.log("Hostname: ", os.hostname());
+console.log("UserInfo: ", os.userInfo());
+console.log("Endianness: ", os.endianness())
+
 
 fileSystem();
