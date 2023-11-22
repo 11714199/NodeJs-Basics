@@ -2,6 +2,7 @@ const coreModules = require('./coreModules.js');
 const fileName = "fileName.txt";
 // core module
 const http = require('http');
+const path = require('path');
 
 
 async function fileSystem() {
@@ -20,7 +21,7 @@ let server = http.createServer((req, res) => {
     if(req.method == "GET") {
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end("Hello World")
-    } else if(req.method == "POST") {
+    } else if(req.method == "POST" && req.path == '') {
         res.end("POST API")
     }
 })
@@ -53,5 +54,45 @@ req.on('error', (err) => {
 })
 
 req.end();
+
+// path module
+
+let join = path.join('/NodeJs-Baiscs','NodeJs-Basics','index.js')
+console.log("join: ",join)
+
+let resolve = path.resolve('NodeJs-Baiscs','NodeJs-Basics','index.js')
+console.log("resolve: ", resolve) // corrent directory
+
+let resolve1 = path.resolve('NodeJs-Baiscs','/NodeJs-Basics','index.js')
+console.log("resolve: ", resolve1)
+
+let baseName = path.basename(join);
+console.log("baseName: ", baseName);
+
+let extname = path.extname(join);
+console.log("extname: ", extname);
+
+let dirname = path.dirname(join);
+console.log("dirname: ", dirname);
+
+let parse = path.parse(join);
+console.log("parse: ", parse)
+
+let dir = '/home/madhavi:/NodeJs-Basics:/NodeJs-Basics/NodeJs-Baiscs:/NodeJs-Basics:/index.js'
+let delimiter = dir.split(path.delimiter);
+console.log("delimiter: ",delimiter)
+
+let formate = path.format({
+    root: '/',
+    dir: 'home/madhavi/NodeJs-Basics/NodeJs-Basics/NodeJs-Baiscs/NodeJs-Basics',
+    base: 'index.js'
+})
+console.log("formate: ", formate)
+
+let relative = path.relative('/home/madhavi/NodeJs-Basics/NodeJs-Basics/NodeJs-Baiscs/NodeJs-Basics/index1.js', '/home/madhavi/NodeJs-Basics/NodeJs-Basics/NodeJs-Baiscs/NodeJs-Basics1/index.js');
+console.log("relative: ", relative)
+
+let sep = join.split(path.sep)
+console.log("sep: ", sep)
 
 fileSystem();
