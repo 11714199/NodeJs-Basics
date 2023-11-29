@@ -1,4 +1,5 @@
 const coreModules = require('./coreModules.js');
+const stream = require('./streams.js')
 const fileName = "fileName.txt";
 // core module
 const http = require('http');
@@ -112,3 +113,5 @@ console.log("Endianness: ", os.endianness())
 
 
 fileSystem();
+stream.streams();
+stream.allStream();
