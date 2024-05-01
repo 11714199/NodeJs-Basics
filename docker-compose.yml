@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  backend:
+    image: nodejsbasicsfordocker
+    build: 
+      context: ./backend
+    ports:
+      - "3000:3000"
+    environment:
+      - BACKEND_URL=http://backend:3000  # Define the backend URL as an environment variable
+
+  frontend:
+    image: vuejsfordocker
+    build: 
+      context: ./frontend
+    ports:
+      - "8080:8080"
+    environment:
+      - BACKEND_URL=http://backend:3000  # Pass the backend URL to the frontend as an environment variable

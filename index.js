@@ -1,10 +1,17 @@
 const coreModules = require('./coreModules.js');
 const stream = require('./streams.js')
 const fileName = "fileName.txt";
+const event = require('./Events.js');
+const express = require('express');
+const app = express()
 // core module
 const http = require('http');
 const path = require('path');
 const os = require('os');
+
+app.listen(3000, ()=> {
+    console.log("Code running on port 3000")
+})
 
 
 async function fileSystem() {
@@ -115,3 +122,4 @@ console.log("Endianness: ", os.endianness())
 fileSystem();
 stream.streams();
 stream.allStream();
+event.events();
